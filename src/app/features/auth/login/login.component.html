@@ -1,0 +1,39 @@
+<ng-container *ngIf="checkingSession; else loginForm">
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" diameter="50" color="primary"></mat-progress-spinner>
+      <p class="checking">Verificando sesión...</p>
+    </div>
+  </ng-container>
+  
+  <ng-template #loginForm>
+    <div class="login-container" @fadeIn *ngIf="!checkingSession">
+      <mat-card>
+        <div class="logo-container">
+            <img src="assets/images/logo-atom-chat.png" alt="Logo" class="logo" />
+        </div>
+        <h2>Iniciar sesión</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="email" type="email" />
+            <mat-error *ngIf="form.get('email')?.hasError('required')">
+              Este campo es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">
+              Correo inválido
+            </mat-error>
+          </mat-form-field>
+  
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid || loading"
+          >
+            {{ loading ? "Cargando..." : "Entrar" }}
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </ng-template>
+  

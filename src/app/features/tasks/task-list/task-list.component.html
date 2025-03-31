@@ -1,0 +1,83 @@
+<app-header />
+<div class="container" @fadeIn>
+    <h2>Tareas</h2>
+
+    <!--<form [formGroup]="taskForm" (ngSubmit)="addTask()" class="task-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+        Agregar tarea
+      </button>
+    </form>-->
+
+    <mat-divider class="divider"></mat-divider>
+
+    <!--<mat-card *ngFor="let task of tasks(); trackBy: trackById" class="task-card">
+      <mat-card-content class="task-content">
+        <mat-checkbox [checked]="task.completed" (change)="toggleStatus(task)">
+        </mat-checkbox>
+  
+        <div class="task-info">
+          <h3 [class.done]="task.completed">{{ task.title }}</h3>
+          <p>{{ task.description }}</p>
+          <small>Creada: {{ task.createdAt | date: 'short' }}</small>
+        </div>
+  
+        <div class="actions">
+          <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>-->
+    <div class="toolbar">
+        <div class="left">
+            <button mat-raised-button color="primary" (click)="toggleAddForm()">
+                {{ showAddForm ? "Cancelar" : "Agregar nueva tarea" }}
+            </button>
+        </div>
+
+        <div class="right">
+            <mat-form-field appearance="outline">
+                <mat-label>Buscar</mat-label>
+                <input matInput type="text" [(ngModel)]="searchTerm" placeholder="Buscar" />
+                <button mat-icon-button *ngIf="searchTerm" matSuffix (click)="searchTerm=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </div>
+    <app-task-form *ngIf="showAddForm" (taskCreated)="onTaskAdded($event)" (cancelForm)="toggleAddForm()"></app-task-form>
+
+    <ng-container *ngFor="let task of paginatedTasks(); trackBy: trackById">
+        <ng-container *ngIf="!selectedTaskId || selectedTaskId === task.id">
+            <app-task-item [task]="task" [editing]="selectedTaskId === task.id" (edit)="onEdit(task.id)"
+                (closeEdit)="onCloseEdit()" (update)="updateTask($event)"
+                (deleted)="deleteTask($event)"></app-task-item>
+        </ng-container>
+    </ng-container>
+    <div class="pagination-controls" *ngIf="tasks().length > itemsPerPage">
+        <button mat-button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+        <span>Página {{ currentPage }} de {{ (tasks().length / itemsPerPage) | mathCeil }}</span>
+        <button mat-button (click)="nextPage()"
+            [disabled]="currentPage >= ((tasks().length / itemsPerPage) | mathCeil)">
+            Siguiente
+        </button>
+    </div>
+    <p class="task-count">
+        Mostrando {{ paginatedTasks().length }} de {{ tasks().length }} tareas
+    </p>
+    <!-- <app-task-item
+    *ngFor="let task of tasks(); trackBy: trackById"
+    [task]="task"
+    (update)="updateTask($event)"
+  ></app-task-item>-->
+</div>

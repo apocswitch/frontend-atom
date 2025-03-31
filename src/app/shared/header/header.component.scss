@@ -1,0 +1,38 @@
+.header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    .spacer {
+      flex: 1;
+    }
+  }
+
+  .header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo {
+    height: 32px;
+  }

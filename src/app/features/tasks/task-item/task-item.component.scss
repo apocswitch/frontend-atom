@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    margin: 1rem 0;
+  }
+  
+  .task-card {
+    padding: 1rem;
+    background: #1e1e1e;
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .task-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .task-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .task-actions button {
+    color: #fff;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+    color: #aaa;
+  }
+  

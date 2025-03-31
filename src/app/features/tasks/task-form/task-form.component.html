@@ -1,0 +1,19 @@
+<div class="form-container" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Título*</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid || loading">
+        {{ loading ? 'Guardando...' : 'Agregar' }}
+      </button> 
+      <button mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+    </div>
+  </div>
+  

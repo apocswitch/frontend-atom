@@ -1,0 +1,104 @@
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .divider {
+    margin: 2rem 0;
+  }
+  
+  .task-card {
+    margin-bottom: 1rem;
+  }
+  
+  .task-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .task-info {
+    flex: 1;
+  }
+  
+  .done {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .logout-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+
+  app-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .task-count {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // ✅ Esto alinea verticalmente
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  
+    .left {
+      flex-shrink: 0;
+    }
+  
+    .right {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; // ✅ También aquí por si acaso
+      min-width: 250px;
+  
+      mat-form-field {
+        margin: 0;
+        height: 56px; // Altura estándar de botón de Material
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+      }
+  
+      input {
+        height: 100%;
+        padding: 0 10px;
+      }
+    }
+  }
+  
+  .search-field {
+    min-width: 250px;
+    flex-grow: 1;
+    max-width: 400px;
+  }
