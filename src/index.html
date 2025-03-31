@@ -21,11 +21,13 @@
   <noscript>Please enable JavaScript to continue using this application.</noscript>
   <script>
     window.addEventListener('load', () => {
-      const splash = document.getElementById('splash-screen');
-      if (splash) {
-        splash.style.opacity = '0';
-        setTimeout(() => splash.remove(), 500);
-      }
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.style.opacity = '0';
+          setTimeout(() => splash.remove(), 500); // Espera a que se desvanezca
+        }
+      }, 2000); // 👈 Aquí el splash dura al menos 1 segundo
     });
   </script>
 </body>
