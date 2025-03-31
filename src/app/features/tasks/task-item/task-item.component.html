@@ -1,40 +1,43 @@
 <ng-container *ngIf="editing || !editMode">
     <div class="task-card" *ngIf="!editMode; else editTemplate">
-      <div class="task-header">
-        <div class="task-title" [class.completed]="task.completed">{{ task.title }}</div>
-        <div class="task-actions">
-          <mat-checkbox [(ngModel)]="task.completed" (change)="onToggleComplete()">
-            Completada
-          </mat-checkbox>
-          <button mat-icon-button (click)="startEdit()">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="deleteTask()">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </div>
-      <div class="task-description">{{ task.description }}</div>
-      <small>{{ task.createdAt | date }}</small>
+        <div class="task-header">
+            <div class="task-top-row">
+              <mat-checkbox class="check" [(ngModel)]="task.completed" (change)="onToggleComplete()">
+                Completada
+              </mat-checkbox>
+          
+              <div class="task-actions">
+                <button mat-icon-button (click)="startEdit()">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteTask()">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          
+            <div class="task-title" [class.completed]="task.completed">{{ task.title }}</div>
+          </div>          
+        <div class="task-description">{{ task.description }}</div>
+        <small>{{ task.createdAt | date }}</small>
     </div>
-  </ng-container>
-  
-  <ng-template #editTemplate>
+</ng-container>
+
+<ng-template #editTemplate>
     <form class="edit-form" [formGroup]="editForm" (ngSubmit)="onSave()">
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Título" formControlName="title" />
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
-      </mat-form-field>
-  
-      <mat-checkbox formControlName="completed">Completada</mat-checkbox>
-  
-      <div class="actions">
-        <button mat-raised-button color="primary" type="submit">Guardar</button>
-        <button mat-button type="button" (click)="cancelEdit()">Cancelar</button>
-      </div>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Título" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="completed">Completada</mat-checkbox>
+
+        <div class="actions">
+            <button mat-raised-button color="primary" type="submit">Guardar</button>
+            <button mat-button type="button" (click)="cancelEdit()">Cancelar</button>
+        </div>
     </form>
-  </ng-template>
-  
+</ng-template>

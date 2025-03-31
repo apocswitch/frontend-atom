@@ -6,32 +6,51 @@
   .task-card {
     padding: 1rem;
     background: #1e1e1e;
-    border-radius: 8px;
+    border-radius: 10px;
     color: #fff;
+    margin-bottom: 1rem;
+  
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
   
-  .task-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .task-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      
+        .task-top-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      
+        .task-actions {
+          display: flex;
+          gap: 0.5rem;
+        }
+      
+        .task-title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          &.completed {
+            text-decoration: line-through;
+            color: #999;
+          }
+        }
+      }
+      
   
-  .task-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
+    .task-description {
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
   
-  .task-actions {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  .task-actions button {
-    color: #fff;
+    small {
+      display: block;
+      margin-top: 0.25rem;
+      color: #aaa;
+    }
   }
   
   .edit-form {
@@ -45,10 +64,21 @@
     gap: 1rem;
     margin-top: 0.5rem;
   }
-
-  .completed {
-    text-decoration: line-through;
-    opacity: 0.7;
-    color: #aaa;
+  
+  // 📱 Mobile Responsive
+  @media (max-width: 768px) {
+    .task-header {
+      .task-top-row {
+        flex-direction: row; // Ya es fila, pero aquí puede mantenerse
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+  
+      .task-title {
+        font-size: 1.1rem;
+      }
+    }
   }
+  
   

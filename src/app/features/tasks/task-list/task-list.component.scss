@@ -65,37 +65,45 @@
   .toolbar {
     display: flex;
     justify-content: space-between;
-    align-items: center; // ✅ Esto alinea verticalmente
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
+    align-items: center;
     gap: 1rem;
+    flex-wrap: wrap; // Importante para que baje en móvil
   
-    .left {
-      flex-shrink: 0;
+    .left,
+    .right {
+      display: flex;
+      flex: 1;
     }
   
     .right {
-      flex-grow: 1;
-      display: flex;
       justify-content: flex-end;
-      align-items: center; // ✅ También aquí por si acaso
-      min-width: 250px;
+    }
   
-      mat-form-field {
-        margin: 0;
-        height: 56px; // Altura estándar de botón de Material
-        display: flex;
-        align-items: center;
-        width: 100%;
-        max-width: 300px;
-      }
-  
-      input {
-        height: 100%;
-        padding: 0 10px;
-      }
+    mat-form-field {
+      width: 100%;
     }
   }
+  
+  // Cuando el ancho sea menor a 768px (móvil)
+  @media (max-width: 768px) {
+    .toolbar {
+      flex-direction: column;
+  
+      .left,
+      .right {
+        width: 100%;
+        justify-content: center;
+      }
+  
+      button {
+        width: 100%;
+      }
+  
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }  
   
   .search-field {
     min-width: 250px;
