@@ -9,6 +9,7 @@ import { Task } from "./task.model";
 export class TaskService {
   private http = inject(HttpClient);
   private baseUrl = "https://us-central1-task-manager-atom.cloudfunctions.net/api/tasks";
+  //private baseUrl = "http://127.0.0.1:5001/task-manager-atom/us-central1/api/tasks";
 
   tasks = signal<Task[]>([]);
   loading = signal(false);

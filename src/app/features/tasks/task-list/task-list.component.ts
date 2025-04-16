@@ -76,7 +76,7 @@ export class TaskListComponent {
 
   constructor(private snackbar: MatSnackBar) {
     const user = this.auth.getCurrentUser();
-    if (user) {
+    if (user && user != null) {
       this.service.loadTasks(user.id);
     }
     // this.service.loadTasks(this.userId);

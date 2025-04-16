@@ -45,7 +45,6 @@ export class AuthService {
   setCurrentUser(user: User): void {
     this.currentUser = user;
     localStorage.setItem("user", JSON.stringify(user));
-  
     if (user.token) {
       localStorage.setItem("accessToken", user.token);
     }
@@ -77,7 +76,7 @@ export class AuthService {
     const refresh = this.getRefreshToken();
     if (!refresh) return throwError(() => new Error("No refresh token"));
 
-    return this.http.post<{ accessToken: string }>(`${this.tokenUrl}/refresh`, { refreshToken: refresh }).pipe(
+    return this.http.post<{ accessToken: string }>(`${this.tokenUrl}/refresh-token`, { refreshToken: refresh }).pipe(
       tap(res => {
         localStorage.setItem("accessToken", res.accessToken);
       }),
